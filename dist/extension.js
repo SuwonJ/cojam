@@ -43,7 +43,11 @@ class ProbScraper {
         const response = await axios_1.default.get(url, { headers: { 'User-Agent': 'YOUR-SERVICE-NAME' } }).then(response => {
             const html = response.data;
             const $ = cheerio_1.default.load(html);
-            const probContext = $('p').text().trim();
+            /*문제 정보들****************************************************************** */
+            const probTitle = $('#problem_title').text().trim();
+            const probContext = $('#problem_description').text().trim();
+            const probInput = $('#problem_input').text().trim();
+            const probOutput = $('#problem_output').text().trim();
             console.log(probContext);
         });
     }
